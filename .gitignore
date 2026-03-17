@@ -1,0 +1,17 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+/index.css
+/index.js
+/dist/
+.venv/
+__pycache__/
+*.class
+*.pyc
+.idea/
+.vscode/
+*.iml
+*.log
+.mvn/
+mvnw
+mvnw.cmd
+application.properties
