@@ -1,0 +1,9 @@
+target/
+!target/*.jar
+.vscode/
+.idea/
+.metals/
+.git/
+.gitignore
+*.iml
+.venv/

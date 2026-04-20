@@ -15,5 +15,5 @@ public class SqlExtractorApplication {
 	}
 }
  
-
+//http://localhost:8080/api/v1/extractor/consulta
 
