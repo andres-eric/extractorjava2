@@ -1,7 +1,5 @@
 package com.celsa.SqlExtractor.controller;
 
-
-import com.celsa.SqlExtractor.dto.consultadto;
 import com.celsa.SqlExtractor.entity.consulta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -20,10 +20,12 @@ public class consultadto {
     private Integer roja;
     private Integer amarilla;
     private Integer verde;
-    private Double cumplimientoCantidad;
-    private Double porcentaje;
-    private Double cumplimientoEntrega;
+    private Double porcentajeCumplimientoVerde;
+    private Double nivelServicioTotal;
+    private Double cumplimientoCantidadEntregada;
+    private Double porcentajeCumplimientoPrimeraEntrega;
     private Integer mes;
     private Integer anio;
+    
 
 }

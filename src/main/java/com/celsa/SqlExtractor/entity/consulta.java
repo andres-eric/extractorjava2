@@ -3,6 +3,7 @@ package com.celsa.SqlExtractor.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
@@ -10,23 +11,35 @@ import lombok.Setter;
 
 @Data
 @Entity
-
+@IdClass(consultaId.class)
 public class consulta {
 
     @Id
     private String proveedor;
 
+    @Column(name = "Total")
     private Integer total;
     private Integer negra;
     private Integer roja;
     private Integer amarilla;
     private Integer verde;
-    @Column(name = "%cumplimiento_cantidad")
-    private Double porcentajeCumplimientoCantidad;
-    private Double porcentaje;
-    @Column(name = "cumplimiento_entrega")
-    private Double cumplimientoEntrega;
+
+    @Column(name = "PORCENTAJE_CUMPLIMIENTO_VERDE")
+    private Double porcentajeCumplimientoVerde;
+
+    @Column(name = "NIVEL_SERVICIO_TOTAL")
+    private Double nivelServicioTotal;
+
+    @Column(name = "CUMPLIMIENTO_CANTIDAD_ENTREGADA")
+    private Double cumplimientoCantidadEntregada;
+
+    @Column(name = "PORCENTAJE_CUMPLIMIENTO_PRIMERA_ENTREGA")
+    private Double porcentajeCumplimientoPrimeraEntrega;
+
+    @Id
     private Integer mes;
+    @Id
+    @Column(name = "Anio")
     private Integer anio;
 
 }

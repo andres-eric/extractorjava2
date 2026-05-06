@@ -28,9 +28,10 @@ public class consultaService {
                         c.getRoja(),
                         c.getAmarilla(),
                         c.getVerde(),
-                        c.getPorcentajeCumplimientoCantidad(), // El 1.000 de tu imagen
-                        c.getPorcentaje(),
-                        c.getCumplimientoEntrega(),
+                        c.getPorcentajeCumplimientoVerde(),
+                        c.getNivelServicioTotal(),
+                        c.getCumplimientoCantidadEntregada(),
+                        c.getPorcentajeCumplimientoPrimeraEntrega(),
                         c.getMes(),
                         c.getAnio()))
                 .collect(Collectors.toList());
