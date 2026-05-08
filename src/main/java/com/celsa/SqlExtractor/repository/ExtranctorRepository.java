@@ -16,6 +16,7 @@ public interface ExtranctorRepository extends JpaRepository<consulta, consultaId
 DECLARE @Espacio_tiempo INT = 3;
 DECLARE @Amortiguador   INT = 5;
 
+
 /* ==========================================================
    2. CONSULTA PRINCIPAL (CTEs)
    ========================================================== */
@@ -209,33 +210,64 @@ WITH tabla_inicial AS (
         CAST( (SUM(CUMPLE_1_ENTREGA) * 100.0) / NULLIF(COUNT(*), 0) AS DECIMAL(10, 2) ) AS PORCENTAJE_CUMPLIMIENTO_PRIMERA_ENTREGA
     FROM cumplen_entregas    
     GROUP BY proveedor, anio, mes
-)
--- SELECT FINAL
-SELECT
-    k.proveedor,
-    k.Total,
-    k.negra,
-    k.roja,
-    k.amarilla,
-    k.verde,
-    k.PORCENTAJE_CUMPLIMIENTO_VERDE,
-    k.NIVEL_SERVICIO_TOTAL,
-    k.CUMPLIMIENTO_CANTIDAD_ENTREGADA,
-    f.PORCENTAJE_CUMPLIMIENTO_PRIMERA_ENTREGA AS PORCENTAJE_CUMPLIMIENTO_PRIMERA_ENTREGA,
-    k.mes,
-    k.anio
-FROM tabla_kpi AS k
-INNER JOIN entregas_final AS f
-    -- Cruce exacto por proveedor + tiempo
-    ON k.proveedor = f.proveedor
-    AND k.anio = f.anio
-    AND k.mes = f.mes
+
+), select_final as (
+    -- SELECT FINAL
+    SELECT
+        k.proveedor,
+        k.Total,
+        k.negra,
+        k.roja,
+        k.amarilla,
+        k.verde,
+        k.PORCENTAJE_CUMPLIMIENTO_VERDE,
+        k.NIVEL_SERVICIO_TOTAL,
+        k.CUMPLIMIENTO_CANTIDAD_ENTREGADA,
+        f.PORCENTAJE_CUMPLIMIENTO_PRIMERA_ENTREGA AS porcentaje_cumplimiento_primera_entrega,
+        k.mes,
+        k.anio
+    FROM tabla_kpi AS k
+    INNER JOIN entregas_final AS f
+        ON k.proveedor = f.proveedor
+        AND k.anio = f.anio
+        AND k.mes = f.mes
+
+), TABLA_INGRESOS AS (
+
+    SELECT 
+        proveedor,
+        anio,
+        mes,
+        SUM(CANTIDAD_INGRESADA) as cantidad_ingresada
+    FROM tabla_inicial
+    GROUP BY 
+        proveedor, 
+        anio, 
+        mes 
+) 
+
+/* ==========================================================
+   4. SALIDA DEFINITIVA
+   ========================================================== */
+SELECT 
+    f.*,
+
+    COALESCE(i.cantidad_ingresada, 0) AS cantidad_ingresada
+    
+FROM select_final as f
+
+LEFT JOIN TABLA_INGRESOS as i
+    ON f.proveedor = i.proveedor
+   AND f.anio = i.anio
+   AND f.mes = i.mes
+
 ORDER BY 
-	
-	k.proveedor DESC,
-    k.anio DESC, 
-    k.mes DESC, 
-    k.NIVEL_SERVICIO_TOTAL DESC;
+	f.proveedor DESC,
+    f.anio DESC, 
+    f.mes DESC, 
+    f.NIVEL_SERVICIO_TOTAL DESC;
+
+
                  """, nativeQuery = true)
 
     List<consulta> getAllConsulta();

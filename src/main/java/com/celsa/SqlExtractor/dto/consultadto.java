@@ -26,6 +26,7 @@ public class consultadto {
     private Double porcentajeCumplimientoPrimeraEntrega;
     private Integer mes;
     private Integer anio;
+    private Integer cantidadIngresada;
     
 
 }

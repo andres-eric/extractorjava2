@@ -42,4 +42,7 @@ public class consulta {
     @Column(name = "Anio")
     private Integer anio;
 
+    @Column(name = "cantidad_ingresada")
+    private Integer cantidadIngresada;
+
 }

@@ -33,7 +33,8 @@ public class consultaService {
                         c.getCumplimientoCantidadEntregada(),
                         c.getPorcentajeCumplimientoPrimeraEntrega(),
                         c.getMes(),
-                        c.getAnio()))
+                        c.getAnio(),
+                        c.getCantidadIngresada()))
                 .collect(Collectors.toList());
     }
 }
