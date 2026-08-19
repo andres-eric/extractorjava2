@@ -15,3 +15,5 @@ __pycache__/
 mvnw
 mvnw.cmd
 application.properties
+
+sql-extractor.tar

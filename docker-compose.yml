@@ -10,5 +10,5 @@ services:
       - SPRING_DATASOURCE_USERNAME=sa
       - SPRING_DATASOURCE_PASSWORD=L4cl4v34dm1n
     # Si 'sarasvati' es la máquina local (Windows host), descomenta las líneas siguientes
-    # extra_hosts:
-    #   - "sarasvati:host-gateway"
+    extra_hosts:
+      - "sarasvati:192.168.6.51"

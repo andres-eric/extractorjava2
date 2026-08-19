@@ -14,6 +14,6 @@ public class SqlExtractorApplication {
 		SpringApplication.run(SqlExtractorApplication.class, args);
 	}
 }
- 
-//http://localhost:8080/api/v1/extractor/consulta
 
+// http://localhost:8080/api/v1/extractor/consulta
+// http://192.168.6.105:8090/api/v1/extractor/consulta
