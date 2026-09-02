@@ -1,6 +1,6 @@
 @echo off
 echo ===================================================
-echo     Actualizando repositorio local hacia Bitbucket
+echo     Actualizando repositorio hacia Bitbucket y GitHub
 echo ===================================================
 echo.
 
@@ -20,11 +20,16 @@ echo Guardando el commit...
 git commit -m "%msg%"
 echo.
 
-echo Subiendo el codigo a Bitbucket (git push)...
-git push
+echo Subiendo el codigo a Bitbucket (origin)...
+git push origin
+echo.
+
+echo Subiendo el codigo a GitHub (github)...
+git push github
 echo.
 
 echo ===================================================
 echo           Proceso terminado con exito!
 echo ===================================================
 pause
+

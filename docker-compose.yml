@@ -4,7 +4,7 @@ services:
     image: sql-extractor:latest
     container_name: sql-extractor
     ports:
-      - "8080:8080"
+      - "8085:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:sqlserver://sarasvati;databaseName=MAXCELSASA;encrypt=false;trustServerCertificate=true;
       - SPRING_DATASOURCE_USERNAME=sa
