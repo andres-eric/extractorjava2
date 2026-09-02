@@ -7,8 +7,8 @@ services:
       - "8085:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:sqlserver://sarasvati;databaseName=MAXCELSASA;encrypt=false;trustServerCertificate=true;
-      - SPRING_DATASOURCE_USERNAME=sa
-      - SPRING_DATASOURCE_PASSWORD=L4cl4v34dm1n
+      - SPRING_DATASOURCE_USERNAME=tu_usuario
+      - SPRING_DATASOURCE_PASSWORD=tu_contraseña
     # Si 'sarasvati' es la máquina local (Windows host), descomenta las líneas siguientes
-    extra_hosts:
-      - "sarasvati:192.168.6.51"
+    # extra_hosts:
+    #   - "sarasvati:192.168.6.51"
